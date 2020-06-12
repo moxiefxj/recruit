@@ -10,6 +10,12 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
+
+  beforeMount() {
+    this.$http.get("/user/findAll").then( res => {
+      console.log(res)
+    })
+  },
   name: 'Home',
   components: {
     HelloWorld
