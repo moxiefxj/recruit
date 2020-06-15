@@ -11,17 +11,25 @@
             <el-menu-item index="/">首页</el-menu-item>
             <el-menu-item index="/position">职位</el-menu-item>
             <el-menu-item index="/company">公司</el-menu-item>
-            <div class="userVerify">
+            <div class="userVerify" v-if="!islogin">
                 <el-menu-item class="login" index="/login" >登录</el-menu-item>
             </div>
-            
-            
+            <div class="userVerify" v-else>
+                <!-- 个人主页 -->
+                <el-submenu index="2" class="HomePage">
+                    <template slot="title">{{name}}</template>
+                    <el-menu-item index="2-1">选项1</el-menu-item>
+                    <el-menu-item index="2-2">选项2</el-menu-item>
+                    <el-menu-item index="2-3">选项3</el-menu-item>
+                </el-submenu>
+            </div> 
         </el-menu>
         
 
 </template>
   <script>
   export default {
+      props:['islogin',"name"],
     data() {
       return {
         activeIndex: '1',
@@ -50,8 +58,8 @@
     .login{
         float: right;
     }
-    .register{
-        float: right;
+    .HomePage{
+        margin-right: 30px !important;
     }
 </style>
 

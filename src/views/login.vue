@@ -56,6 +56,10 @@ export default {
               ...this.loginForm
             }).then( res => {
               if(res.data.success){
+                this.$message({
+                  message: '登录成功',
+                  type: 'success'
+                });
                 // 存信息 到首页
                 this.toUser(res.data)
                 
@@ -81,9 +85,14 @@ export default {
         // console.log(usertoken)
         // 储存在vuex
         this.changeLogin(data.token)
-        sessionStorage.setItem("name", res.data.detail.name);
-        sessionStorage.setItem("email", res.data.detail.email);
-        sessionStorage.setItem("id", res.data.detail.id);
+        sessionStorage.setItem("name", data.detail.name);
+        sessionStorage.setItem("email", data.detail.email);
+        sessionStorage.setItem("id", data.detail.id);
+
+        // 跳转首页
+        this.$router.replace({
+          path:'/'
+        })
       },
       toRegister:function(){
         this.$router.push({

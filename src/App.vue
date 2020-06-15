@@ -3,7 +3,7 @@
     <el-container>
       <!-- 导航栏 -->
     <el-header>
-      <nav-com></nav-com>
+      <nav-com :islogin = "islogin" :name = "name"></nav-com>
     </el-header>
     <!-- 主体 -->
     <el-main>
@@ -25,7 +25,23 @@ export default {
   components:{
     navCom,
     footerCom
-  }
+  },
+  data() {
+    return {
+      islogin:false,
+      name:""
+    }
+  },
+  methods:{
+    fetchData(){
+      this.islogin = sessionStorage.getItem("name")?true:false
+      this.name = this.islogin ? sessionStorage.getItem("name") : ""
+    }
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route': 'fetchData'
+  },
 }
 </script>
 
