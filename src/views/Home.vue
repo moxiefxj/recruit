@@ -1,24 +1,48 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- 搜索 -->
+    <el-row class="search">
+      <el-col :span="12" :offset="6">
+        <el-input placeholder="请输入内容" v-model="search" class="input-with-select">
+        <el-button slot="append" icon="el-icon-search">搜索</el-button>
+      </el-input>
+      </el-col>
+      
+      
+    </el-row>
+    <!-- 推荐 -->
+    <el-row class="recommend"> 推荐</el-row>
+    <!-- 热门职位 -->
+    <el-row class="hotposition"> 热门职位</el-row>
+    <!-- 热门公司 -->
+    <el-row class="hotcompany"> 热门公司</el-row>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-
-  beforeMount() {
-    this.$http.get("/user/findAll").then( res => {
-      console.log(res)
-    })
+  data() {
+    return {
+      search:""
+    }
   },
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
 }
 </script>
+
+<style>
+  .search{
+    margin: 20px 0;
+  }
+  .recommend{
+    height: 260px;
+    background-color: blueviolet;
+  }
+  .hotposition{
+    height: 300px;
+    background-color: cadetblue;
+  }
+  .hotcompany{
+    height: 300px;
+    background-color: coral;
+  }
+</style>

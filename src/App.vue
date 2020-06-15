@@ -1,32 +1,44 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <el-container>
+      <!-- 导航栏 -->
+    <el-header>
+      <nav-com></nav-com>
+    </el-header>
+    <!-- 主体 -->
+    <el-main>
+      <router-view/>
+    </el-main>
+    <!-- 底部 -->
+    <el-footer class="footer">
+      <footer-com></footer-com>
+    </el-footer>
+  </el-container>
   </div>
+    
 </template>
 
+<script>
+import navCom from './components/navCom'
+import footerCom from './components/footerCom';
+export default {
+  components:{
+    navCom,
+    footerCom
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  #app{
 
-#nav {
-  padding: 30px;
-}
+    background-color: aquamarine;
+  }
+  .el-header,.el-footer{
+      padding: 0 !important;
+  }
+  .el-main{
+    padding: 0 !important;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
